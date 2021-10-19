@@ -1,0 +1,11 @@
+:export {
+  color1: #9b1d1d;
+  color2: #201818;
+  color3: #ececec;
+  color4: #868686;
+  bpSM: 576px;
+  bpMD: 768px;
+  bpLG: 992px;
+  bpXL: 1200px;
+  bpXXL: 1400px;
+}

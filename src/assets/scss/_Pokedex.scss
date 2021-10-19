@@ -1,0 +1,9 @@
+.pokedex {
+	padding-top: 3.5rem;
+	display: flex;
+	flex-direction: column;
+
+	.load-more {
+		margin: 2rem auto;
+	}
+}

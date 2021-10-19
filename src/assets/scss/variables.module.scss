@@ -1,0 +1,23 @@
+$color-1: #9b1d1d;
+$color-2: #201818;
+$color-3: #ececec;
+$color-4: #868686;
+
+$bp-sm: 576px;
+$bp-md: 768px;
+$bp-lg: 992px;
+$bp-xl: 1200px;
+$bp-xxl: 1400px;
+
+:export {
+	color1: $color-1;
+	color2: $color-2;
+	color3: $color-3;
+	color4: $color-4;
+
+	bpSM: $bp-sm;
+	bpMD: $bp-md;
+	bpLG: $bp-lg;
+	bpXL: $bp-xl;
+	bpXXL: $bp-xxl;
+}

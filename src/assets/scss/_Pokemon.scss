@@ -1,0 +1,49 @@
+.pokemon {
+	display: flex;
+	position: relative;
+	background-color: $color-1;
+	color: $color-3;
+	padding: 1rem;
+
+	&:nth-child(even) {
+		flex-direction: row-reverse;
+		background-color: $color-3;
+		color: $color-2;
+	}
+
+	.caught-checkbox {
+		position: absolute;
+		bottom: 0rem;
+		left: 50%;
+		transform: translate(-50%, 40%);
+		z-index: 6;
+	}
+
+	.types {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: column;
+		margin: 0 0.5rem;
+	}
+
+	.divider {
+		background-color: $color-2;
+		height: 0.5rem;
+		width: 100%;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+
+		.divider-center {
+			height: 2rem;
+			width: 2rem;
+			border-radius: 50%;
+			background-color: $color-2;
+			position: absolute;
+			left: 50%;
+			bottom: 0;
+			transform: translate(-50%, 40%);
+			z-index: 5;
+		}
+	}
+}

@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from 'react';
+import { PokemonContext } from './PokemonContext';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import Pokedex from './components/Pokedex';
+import PokemonDetails from './components/PokemonDetails';
+
+import './assets/css/styles.css';
+
+const App = () => {
+	const [appState, setAppState] = useState({
+		caught: [],
+		all: [],
+		filter: 'all',
+		searchResults: [],
+		searchTerm: '',
+	});
+
+	useEffect(() => {
+		if (localStorage.caughtPokemon) {
+			const data = localStorage.getItem('caughtPokemon');
+			setAppState({ ...appState, caught: JSON.parse(data) });
+		}
+		// eslint-disable-next-line
+	}, []);
+
+	return (
+		<Router>
+			<PokemonContext.Provider value={{ appState, setAppState }}>
+				<Switch>
+					<Route exact path='/' component={Pokedex} />
+					<Route
+						exact
+						path='/pokemon/:id'
+						component={PokemonDetails}
+					/>
+				</Switch>
+			</PokemonContext.Provider>
+		</Router>
+	);
+};
 
 export default App;
