@@ -3,6 +3,11 @@
 	z-index: 100;
 	width: 100%;
 
+	.navbar-brand {
+		font-family: 'Pokemon Solid', sans-serif;
+		padding-left: 0.25rem;
+	}
+
 	.navbar-nav {
 		width: 100%;
 	}

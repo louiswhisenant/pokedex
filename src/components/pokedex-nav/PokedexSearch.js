@@ -7,7 +7,7 @@ import Fuse from 'fuse.js';
 const PokedexSearch = () => {
 	const [query, setQuery] = useState('');
 	const { appState, setAppState } = useContext(PokemonContext);
-	const { all, filter, searchTerm } = appState;
+	const { pokemon, filter } = appState;
 
 	const options = {
 		// isCaseSensitive: false,
@@ -17,7 +17,7 @@ const PokedexSearch = () => {
 		// findAllMatches: false,
 		minMatchCharLength: 3,
 		// location: 0,
-		// threshold: 0.6,
+		threshold: 0.3,
 		// distance: 100,
 		// useExtendedSearch: false,
 		// ignoreLocation: false,
@@ -26,16 +26,18 @@ const PokedexSearch = () => {
 	};
 
 	useEffect(() => {
-		if (all.results) {
-			const fuse = new Fuse(all.results, options);
+		if (pokemon) {
+			const fuse = new Fuse(pokemon, options);
+
+			const res = fuse.search(query).map((obj) => obj.item);
 
 			setAppState({
 				...appState,
-				searchResults: fuse.search(query),
+				searchResults: res,
 				searchTerm: query,
 			});
 		}
-	}, [query, all.results]);
+	}, [query, pokemon]);
 
 	return (
 		<NavItem id='pokedex-search'>

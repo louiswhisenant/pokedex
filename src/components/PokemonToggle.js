@@ -7,17 +7,24 @@ const PokemonToggle = ({ name }) => {
 
 	const onToggle = async () => {
 		if (caught.includes(name)) {
-			setAppState({
+			await setAppState({
 				...appState,
 				caught: caught.filter((pokemon) => pokemon !== name),
 			});
+
+			console.log(caught);
 		} else {
-			setAppState({ ...appState, caught: [...caught, name] });
+			await setAppState({ ...appState, caught: [...caught, name] });
+
+			console.log(caught);
 		}
+
+		// localStorage.setItem('caughtPokemon', JSON.stringify(caught));
 	};
 
 	useEffect(() => {
 		localStorage.setItem('caughtPokemon', JSON.stringify(caught));
+		console.log(caught);
 	}, [caught]);
 
 	return (

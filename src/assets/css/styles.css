@@ -16,6 +16,10 @@
   z-index: 100;
   width: 100%;
 }
+#pokedex-nav .navbar-brand {
+  font-family: "Pokemon Solid", sans-serif;
+  padding-left: 0.25rem;
+}
 #pokedex-nav .navbar-nav {
   width: 100%;
 }

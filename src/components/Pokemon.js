@@ -32,7 +32,9 @@ const Pokemon = ({ pokemon: { name, url } }) => {
 				</div>
 				<div className='types d-none d-md-block'>
 					{pokemon.types.map((t) => (
-						<div className={`type type-${t.type.name}`}>
+						<div
+							className={`type type-${t.type.name}`}
+							key={t.type.name}>
 							{t.type.name}
 						</div>
 					))}
