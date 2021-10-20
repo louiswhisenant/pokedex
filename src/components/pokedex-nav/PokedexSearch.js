@@ -6,9 +6,11 @@ import Fuse from 'fuse.js';
 const PokedexSearch = () => {
 	const [query, setQuery] = useState('');
 	const {
+		// eslint-disable-next-line no-unused-vars
 		pokemon: [pokemon, setPokemon],
-		pokemon: [filter, setFilter],
+		// eslint-disable-next-line no-unused-vars
 		searchResults: [searchResults, setSearchResults],
+		// eslint-disable-next-line no-unused-vars
 		searchTerm: [searchTerm, setSearchTerm],
 	} = useContext(StoreContext);
 
@@ -37,6 +39,7 @@ const PokedexSearch = () => {
 			setSearchResults(res);
 			setSearchTerm(query);
 		}
+		// eslint-disable-next-line
 	}, [query, pokemon]);
 
 	return (
@@ -49,12 +52,6 @@ const PokedexSearch = () => {
 					}}
 					placeholder='Search currently listed Pokemon'
 				/>
-				{filter !== 'all' && (
-					<div className='active-filter'>
-						<i className='fas fa-exclamation'></i>{' '}
-						<span>filter active</span>
-					</div>
-				)}
 			</Form>
 		</NavItem>
 	);

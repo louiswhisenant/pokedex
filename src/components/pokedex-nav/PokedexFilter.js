@@ -17,22 +17,30 @@ const PokedexFilter = () => {
 	};
 
 	return (
-		<UncontrolledDropdown inNavbar id='pokedex-filter'>
-			<DropdownToggle caret>
-				<i className='fas fa-filter'></i>
-			</DropdownToggle>
-			<DropdownMenu right>
-				<DropdownItem onClick={onChange} value='all'>
-					All
-				</DropdownItem>
-				<DropdownItem onClick={onChange} value='caught'>
-					Caught
-				</DropdownItem>
-				<DropdownItem onClick={onChange} value='uncaught'>
-					Uncaught
-				</DropdownItem>
-			</DropdownMenu>
-		</UncontrolledDropdown>
+		<div id='pokedex-filter'>
+			{filter !== 'all' && (
+				<div className='active-filter'>
+					<p>filter active</p>
+					<i className='fas fa-exclamation'></i>
+				</div>
+			)}
+			<UncontrolledDropdown inNavbar>
+				<DropdownToggle caret>
+					<i className='fas fa-filter'></i>
+				</DropdownToggle>
+				<DropdownMenu right>
+					<DropdownItem onClick={onChange} value='all'>
+						All
+					</DropdownItem>
+					<DropdownItem onClick={onChange} value='caught'>
+						Caught
+					</DropdownItem>
+					<DropdownItem onClick={onChange} value='uncaught'>
+						Uncaught
+					</DropdownItem>
+				</DropdownMenu>
+			</UncontrolledDropdown>
+		</div>
 	);
 };
 

@@ -1,4 +1,34 @@
 #pokedex-filter {
+	position: relative;
+	.active-filter {
+		position: absolute;
+		background-color: firebrick;
+		padding: 0.1rem 1rem;
+		border-radius: 0.25rem;
+		color: $color-3;
+		right: 3rem;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		opacity: 0.5;
+		max-height: 2rem;
+		text-align: center;
+
+		p {
+			display: none;
+			margin: 0 0.5rem 0 0;
+		}
+
+		&:hover,
+		&:active {
+			right: -0.3rem;
+			width: 9rem;
+			opacity: 1;
+			p {
+				display: initial;
+			}
+		}
+	}
+
 	.dropdown-menu-right {
 		right: 0;
 	}

@@ -10,10 +10,14 @@ import Pokemon from './Pokemon';
 const Pokedex = () => {
 	const [limit, setLimit] = useState(20);
 	const {
+		// eslint-disable-next-line no-unused-vars
 		caught: [caught, setCaught],
 		pokemon: [pokemon, setPokemon],
+		// eslint-disable-next-line no-unused-vars
 		filter: [filter, setFilter],
+		// eslint-disable-next-line no-unused-vars
 		searchResults: [searchResults, setSearchResults],
+		// eslint-disable-next-line no-unused-vars
 		searchTerm: [searchTerm, setSearchTerm],
 	} = useContext(StoreContext);
 

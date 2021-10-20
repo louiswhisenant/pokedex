@@ -29,24 +29,35 @@
   margin-right: 0.5rem;
   position: relative;
 }
-#pokedex-search .active-filter {
+
+#pokedex-filter {
+  position: relative;
+}
+#pokedex-filter .active-filter {
   position: absolute;
   background-color: firebrick;
   padding: 0.1rem 1rem;
   border-radius: 0.25rem;
   color: #ececec;
-  right: 0.5rem;
+  right: 3rem;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
   opacity: 0.5;
+  max-height: 2rem;
+  text-align: center;
 }
-#pokedex-search .active-filter span {
+#pokedex-filter .active-filter p {
   display: none;
+  margin: 0 0.5rem 0 0;
 }
-#pokedex-search .active-filter:hover span, #pokedex-search .active-filter:active span {
+#pokedex-filter .active-filter:hover, #pokedex-filter .active-filter:active {
+  right: -0.3rem;
+  width: 9rem;
+  opacity: 1;
+}
+#pokedex-filter .active-filter:hover p, #pokedex-filter .active-filter:active p {
   display: initial;
 }
-
 #pokedex-filter .dropdown-menu-right {
   right: 0;
 }

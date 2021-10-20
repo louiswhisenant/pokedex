@@ -2,27 +2,4 @@
 	width: 100%;
 	margin-right: 0.5rem;
 	position: relative;
-
-	.active-filter {
-		position: absolute;
-		background-color: firebrick;
-		padding: 0.1rem 1rem;
-		border-radius: 0.25rem;
-		color: $color-3;
-		right: 0.5rem;
-		top: 50%;
-		transform: translateY(-50%);
-		opacity: 0.5;
-
-		span {
-			display: none;
-		}
-
-		&:hover,
-		&:active {
-			span {
-				display: initial;
-			}
-		}
-	}
 }

@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { StoreContext } from './context/Context';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -11,35 +11,33 @@ import { Spinner } from 'reactstrap';
 const App = () => {
 	const [loading, setLoading] = useState(true);
 	const {
+		// eslint-disable-next-line no-unused-vars
 		caught: [caught, setCaught],
 	} = useContext(StoreContext);
 
-	if (loading) {
-		if (localStorage.caughtPokemon) {
-			const data = localStorage.getItem('caughtPokemon');
+	useEffect(() => {
+		if (loading) {
+			if (localStorage.caughtPokemon) {
+				const data = localStorage.getItem('caughtPokemon');
 
-			setCaught(JSON.parse(data));
+				setCaught(JSON.parse(data));
+			}
+			setLoading(false);
 		}
-		setLoading(false);
-	}
+		// eslint-disable-next-line
+	}, []);
 
 	if (loading) {
 		return <Spinner />;
 	}
 
 	return (
-		!loading && (
-			<Router>
-				<Switch>
-					<Route exact path='/' component={Pokedex} />
-					<Route
-						exact
-						path='/pokemon/:id'
-						component={PokemonDetails}
-					/>
-				</Switch>
-			</Router>
-		)
+		<Router>
+			<Switch>
+				<Route exact path='/' component={Pokedex} />
+				<Route exact path='/pokemon/:id' component={PokemonDetails} />
+			</Switch>
+		</Router>
 	);
 };
 
