@@ -2,24 +2,20 @@ import { useState, useEffect, useContext, Fragment } from 'react';
 import { Container, Button } from 'reactstrap';
 
 import axios from 'axios';
+import { StoreContext } from '../context/Context';
 
-import { PokemonContext } from '../PokemonContext';
 import PokedexNav from './pokedex-nav/PokedexNav';
 import Pokemon from './Pokemon';
 
 const Pokedex = () => {
 	const [limit, setLimit] = useState(20);
-	const { appState, setAppState } = useContext(PokemonContext);
-	const { caught, pokemon, filter, searchResults, searchTerm } = appState;
-
-	const loadMore = pokemon && (
-		<Button
-			onClick={() => {
-				setLimit(limit + 20);
-			}}>
-			Load More
-		</Button>
-	);
+	const {
+		caught: [caught, setCaught],
+		pokemon: [pokemon, setPokemon],
+		filter: [filter, setFilter],
+		searchResults: [searchResults, setSearchResults],
+		searchTerm: [searchTerm, setSearchTerm],
+	} = useContext(StoreContext);
 
 	const mapResults = (req, filter, limit) => {
 		let res;
@@ -59,7 +55,7 @@ const Pokedex = () => {
 			'https://pokeapi.co/api/v2/pokemon?limit=898'
 		);
 
-		setAppState({ ...appState, pokemon: res.data.results });
+		setPokemon(res.data.results);
 	};
 
 	useEffect(() => {
@@ -85,7 +81,15 @@ const Pokedex = () => {
 						) : (
 							mapResults(pokemon, filter, limit)
 						)}
-						<Button className='load-more'>{loadMore}</Button>
+						{limit < 898 && (
+							<Button
+								className='load-more'
+								onClick={() => {
+									setLimit(limit + 20);
+								}}>
+								Load More
+							</Button>
+						)}
 					</div>
 				</Container>
 			)}

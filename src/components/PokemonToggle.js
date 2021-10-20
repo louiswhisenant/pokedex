@@ -1,30 +1,19 @@
 import { useContext, useEffect } from 'react';
-import { PokemonContext } from '../PokemonContext';
+import { StoreContext } from '../context/Context';
 
 const PokemonToggle = ({ name }) => {
-	const { appState, setAppState } = useContext(PokemonContext);
-	const { caught } = appState;
+	const {
+		caught: [caught, setCaught],
+	} = useContext(StoreContext);
 
-	const onToggle = async () => {
-		if (caught.includes(name)) {
-			await setAppState({
-				...appState,
-				caught: caught.filter((pokemon) => pokemon !== name),
-			});
-
-			console.log(caught);
-		} else {
-			await setAppState({ ...appState, caught: [...caught, name] });
-
-			console.log(caught);
-		}
-
-		// localStorage.setItem('caughtPokemon', JSON.stringify(caught));
+	const onToggle = () => {
+		caught.includes(name)
+			? setCaught(caught.filter((pokemon) => pokemon !== name))
+			: setCaught([...caught, name]);
 	};
 
 	useEffect(() => {
 		localStorage.setItem('caughtPokemon', JSON.stringify(caught));
-		console.log(caught);
 	}, [caught]);
 
 	return (

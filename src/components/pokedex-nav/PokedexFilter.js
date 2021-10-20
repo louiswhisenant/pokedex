@@ -5,15 +5,15 @@ import {
 	DropdownMenu,
 	DropdownItem,
 } from 'reactstrap';
-import { PokemonContext } from '../../PokemonContext';
+import { StoreContext } from '../../context/Context';
 
 const PokedexFilter = () => {
-	const { appState, setAppState } = useContext(PokemonContext);
-	// const [filter, setFilter] = useState('all');
+	const {
+		filter: [filter, setFilter],
+	} = useContext(StoreContext);
 
 	const onChange = (e) => {
-		// setFilter(e.target.value);
-		setAppState({ ...appState, filter: e.target.value });
+		setFilter(e.target.value);
 	};
 
 	return (

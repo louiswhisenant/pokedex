@@ -1,13 +1,16 @@
 import { useState, useContext, useEffect } from 'react';
 import { NavItem, Form, Input } from 'reactstrap';
-import { PokemonContext } from '../../PokemonContext';
-
+import { StoreContext } from '../../context/Context';
 import Fuse from 'fuse.js';
 
 const PokedexSearch = () => {
 	const [query, setQuery] = useState('');
-	const { appState, setAppState } = useContext(PokemonContext);
-	const { pokemon, filter } = appState;
+	const {
+		pokemon: [pokemon, setPokemon],
+		pokemon: [filter, setFilter],
+		searchResults: [searchResults, setSearchResults],
+		searchTerm: [searchTerm, setSearchTerm],
+	} = useContext(StoreContext);
 
 	const options = {
 		// isCaseSensitive: false,
@@ -31,11 +34,8 @@ const PokedexSearch = () => {
 
 			const res = fuse.search(query).map((obj) => obj.item);
 
-			setAppState({
-				...appState,
-				searchResults: res,
-				searchTerm: query,
-			});
+			setSearchResults(res);
+			setSearchTerm(query);
 		}
 	}, [query, pokemon]);
 

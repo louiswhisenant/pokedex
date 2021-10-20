@@ -186,13 +186,13 @@
 }
 
 .type-flying {
-  background-color: #80e2e2;
-  color: #201818;
+  background-color: #0e8f8f;
+  color: #ececec;
 }
 
 .type-poison {
-  background-color: #260a41;
-  color: #ececec;
+  background-color: #a8d600;
+  color: #201818;
 }
 
 .type-ground {
@@ -221,17 +221,17 @@
 }
 
 .type-fire {
-  background-color: #c47500;
-  color: #ececec;
+  background-color: #ff8800;
+  color: #201818;
 }
 
 .type-water {
-  background-color: #086c85;
-  color: #ececec;
+  background-color: #57b3ca;
+  color: #201818;
 }
 
 .type-grass {
-  background-color: #0e910e;
+  background-color: #138630;
   color: #ececec;
 }
 

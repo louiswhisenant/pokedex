@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { PokemonContext } from './PokemonContext';
+import { useState, useContext } from 'react';
+import { StoreContext } from './context/Context';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Pokedex from './components/Pokedex';
@@ -10,18 +10,15 @@ import { Spinner } from 'reactstrap';
 
 const App = () => {
 	const [loading, setLoading] = useState(true);
-	const [appState, setAppState] = useState({
-		caught: [],
-		pokemon: [],
-		filter: 'all',
-		searchResults: [],
-		searchTerm: '',
-	});
+	const {
+		caught: [caught, setCaught],
+	} = useContext(StoreContext);
 
 	if (loading) {
 		if (localStorage.caughtPokemon) {
 			const data = localStorage.getItem('caughtPokemon');
-			setAppState({ ...appState, caught: JSON.parse(data) });
+
+			setCaught(JSON.parse(data));
 		}
 		setLoading(false);
 	}
@@ -33,16 +30,14 @@ const App = () => {
 	return (
 		!loading && (
 			<Router>
-				<PokemonContext.Provider value={{ appState, setAppState }}>
-					<Switch>
-						<Route exact path='/' component={Pokedex} />
-						<Route
-							exact
-							path='/pokemon/:id'
-							component={PokemonDetails}
-						/>
-					</Switch>
-				</PokemonContext.Provider>
+				<Switch>
+					<Route exact path='/' component={Pokedex} />
+					<Route
+						exact
+						path='/pokemon/:id'
+						component={PokemonDetails}
+					/>
+				</Switch>
 			</Router>
 		)
 	);
