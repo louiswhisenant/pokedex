@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+A live demo of the project is available [here](https://pokedex-ochre.vercel.app/).
+
 ## Available Scripts
 
 In the project directory, you can run:
