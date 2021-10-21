@@ -4,6 +4,7 @@ import { act } from 'react-dom/test-utils';
 import { shallow } from 'enzyme';
 
 import { StoreProvider } from '../context/Store';
+
 import { BrowserRouter } from 'react-router-dom';
 import PokemonToggle from '../components/PokemonToggle';
 

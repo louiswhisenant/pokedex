@@ -1,11 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import Pokedex from '../components/Pokedex';
-import { StoreProvider } from '../context/Store';
-import App from '../App';
 import axiosMock from 'axios';
 import { act } from 'react-dom/test-utils';
-import '@testing-library/jest-dom/extend-expect';
+
+import { StoreProvider } from '../context/Store';
+
+import App from '../App';
+import Pokedex from '../components/Pokedex';
+
 import { axData } from './axData';
 
 jest.mock('axios');

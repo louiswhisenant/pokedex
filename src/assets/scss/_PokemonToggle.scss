@@ -1,0 +1,38 @@
+.pokemon-toggle {
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	transform: scale(1.5, 1.5);
+	border-radius: 50%;
+
+	&:hover {
+		background-color: rgba(38, 145, 207, 0.7);
+	}
+
+	&:active {
+		margin-bottom: -0.1rem;
+	}
+
+	&:focus-visible {
+		outline: none;
+		box-shadow: 0 0 0 0.2rem $color-3;
+	}
+
+	.pokeball-caught {
+		filter: saturate(200%);
+
+		&:hover {
+			filter: saturate(80%);
+			transition: filter 0.3s ease;
+		}
+	}
+
+	.pokeball-uncaught {
+		filter: grayscale(100%);
+
+		&:hover {
+			filter: grayscale(60%);
+			transition: filter 0.3s ease;
+		}
+	}
+}

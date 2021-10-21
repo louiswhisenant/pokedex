@@ -7,7 +7,7 @@ import {
 	formatHeight,
 	formatWeight,
 } from '../utils/formatNumbers';
-import { Spinner, Button } from 'reactstrap';
+import { Spinner, Button, Container } from 'reactstrap';
 
 const PokemonDetails = ({ match }) => {
 	const [details, setDetails] = useState(null);
@@ -41,70 +41,101 @@ const PokemonDetails = ({ match }) => {
 	}
 
 	return (
-		<div className='pokemon-details'>
+		<section className='pokemon-details'>
 			<div className='links'>
 				<Link to='/'>
 					<Button>
-						<i className='fas fa-arrow-left'></i>
+						<i className='fas fa-arrow-left'></i>{' '}
+						<span className='d-none d-md-inline'>
+							Back to Pokedex
+						</span>
 					</Button>
 				</Link>
 			</div>
+
+			<PokemonToggle name={name} />
+
 			<div className='pokemon-details-header'>
 				<h1 className='title'>{name}</h1>
 				<h1>#{formatNumber(order, 3)}</h1>
 			</div>
-			<div className='pokemon-details-body'>
-				<div className='pokemon-details-image'>
-					<img src={avatar} alt={name} />
-				</div>
-				<div className='pokemon-details-info'>
-					<PokemonToggle name={name} />
-					<div className='types'>
-						{types.map((t) => (
-							<p
-								className={`type type-${t.type.name}`}
-								key={t.type.name}>
-								{t.type.name}
-							</p>
-						))}
+			<Container>
+				<div className='pokemon-details-body'>
+					<div className='pokemon-details-image'>
+						<img src={avatar} alt={name} />
 					</div>
 
-					<div className='abilities d-none d-lg-block'>
-						{abilities.map((a) => (
-							<div
-								className={`ability ability-${a.ability.name}`}
-								key={a.ability.name}>
-								{a.ability.name}
+					<div className='pokemon-details-info'>
+						<div className='types'>
+							<div className='pokemon-details-title types-title'>
+								Types
 							</div>
-						))}
-					</div>
-
-					<div className='stats d-none d-xl-flex'>
-						{stats.map((s) => (
-							<div
-								className={`stat stat-${s.stat.name}`}
-								key={s.stat.name}>
-								<div className='stat-name'>{s.stat.name}</div>
-								<span className='stat-value'>
-									{s.base_stat}
-								</span>
+							<div className='types-body'>
+								{types.map((t) => (
+									<p
+										className={`type type-${t.type.name}`}
+										key={t.type.name}>
+										{t.type.name}
+									</p>
+								))}
 							</div>
-						))}
-					</div>
+						</div>
 
-					<div className='biometrics'>
-						<h3>
-							<i className='fas fa-weight-hanging'></i>{' '}
-							{formatHeight(height)}
-						</h3>
-						<h3>
-							<i className='fas fa-ruler'></i>{' '}
-							{formatWeight(weight)}
-						</h3>
+						<div className='abilities'>
+							<div className='pokemon-details-title abilities-title'>
+								Abilities
+							</div>
+							<div className='abilities-body'>
+								{abilities.map((a) => (
+									<div
+										className={`ability ability-${a.ability.name}`}
+										key={a.ability.name}>
+										{a.ability.name}
+									</div>
+								))}
+							</div>
+						</div>
+
+						<div className='biometrics'>
+							<div className='pokemon-details-title biometrics-title'>
+								Biometrics
+							</div>
+							<div className='biometrics-body'>
+								<p className='biometric'>
+									<i className='fas fa-ruler'></i>{' '}
+									<span>{formatHeight(height)}</span>
+								</p>
+								<p className='biometric'>
+									<i className='fas fa-weight-hanging'></i>{' '}
+									<span>{formatWeight(weight)}</span>
+								</p>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-		</div>
+				<div className='pokemon-details-footer'>
+					<div className='stats'>
+						<div className='pokemon-details-title stats-title'>
+							Stats
+						</div>
+						<div className='stats-body'>
+							{stats.map((s) => (
+								<div
+									className={`stat stat-${s.stat.name}`}
+									key={s.stat.name}>
+									<div className='stat-name'>
+										{s.stat.name}
+									</div>
+									<span className='stat-value'>
+										{s.base_stat}
+									</span>
+								</div>
+							))}
+						</div>
+					</div>
+				</div>
+			</Container>
+		</section>
 	);
 };
 

@@ -2,6 +2,7 @@
 // font-family: 'Pokemon Solid', sans-serif;
 
 @import './variables.module.scss';
+@import './keyframes.module.scss';
 
 @import './pokedex-nav/_PokedexNav.scss';
 @import './pokedex-nav/_PokedexSearch.scss';
@@ -9,6 +10,7 @@
 
 @import './_Pokedex.scss';
 @import './_Pokemon.scss';
+@import './_PokemonToggle.scss';
 @import './_PokemonDetails.scss';
 
 * {
@@ -17,103 +19,168 @@
 	padding: 0;
 }
 
-.caught-checkbox {
-	cursor: pointer;
-	transform: scale(1.5, 1.5);
-	filter: saturate(200%);
-
-	.pokeball-uncaught {
-		filter: grayscale(100%);
-	}
-}
-
 .type {
 	text-align: center;
 	padding: 0.25rem 0.5rem;
 	margin: 0.25rem;
-	min-width: 5rem;
 	background-color: $color-2;
 	border-radius: 0.25rem;
 }
 
 .type-normal {
-	background-color: grey;
+	background: linear-gradient(to bottom, grey 0%, darken(grey, 10%) 60%);
 	color: $color-3;
 }
 .type-fighting {
-	background-color: #111397;
+	background: linear-gradient(
+		to bottom,
+		#111397 0%,
+		darken(#111397, 10%) 60%
+	);
 	color: $color-3;
 }
 .type-flying {
-	background-color: rgb(14, 143, 143);
+	background: linear-gradient(
+		to bottom,
+		rgb(14, 143, 143) 0%,
+		darken(rgb(14, 143, 143), 10%) 60%
+	);
 	color: $color-3;
 }
 .type-poison {
-	background-color: rgb(168, 214, 0);
+	background: linear-gradient(
+		to bottom,
+		rgb(168, 214, 0) 0%,
+		darken(rgb(168, 214, 0), 10%) 60%
+	);
 	color: $color-2;
 }
 .type-ground {
-	background-color: rgb(77, 55, 9);
+	background: linear-gradient(
+		to bottom,
+		rgb(77, 55, 9) 0%,
+		darken(rgb(77, 55, 9), 10%) 60%
+	);
 	color: $color-3;
 }
 .type-rock {
-	background-color: rgb(83, 74, 67);
+	background: linear-gradient(
+		to bottom,
+		rgb(83, 74, 67) 0%,
+		darken(rgb(83, 74, 67), 10%) 60%
+	);
 	color: $color-3;
 }
 .type-bug {
-	background-color: rgb(37, 56, 107);
+	background: linear-gradient(
+		to bottom,
+		rgb(37, 56, 107) 0%,
+		darken(rgb(37, 56, 107), 10%) 60%
+	);
 	color: $color-3;
 }
 .type-ghost {
-	background-color: rgb(189, 189, 189);
+	background: linear-gradient(
+		to bottom,
+		rgb(189, 189, 189) 0%,
+		darken(rgb(189, 189, 189), 10%) 60%
+	);
 	color: $color-2;
 }
 .type-steel {
-	background-color: rgb(80, 80, 80);
+	background: linear-gradient(
+		to bottom,
+		rgb(80, 80, 80) 0%,
+		darken(rgb(80, 80, 80), 10%) 60%
+	);
 	color: $color-3;
 }
 .type-fire {
-	background-color: rgb(255, 136, 0);
+	background: linear-gradient(
+		to bottom,
+		rgb(255, 136, 0) 0%,
+		darken(rgb(255, 136, 0), 10%) 60%
+	);
 	color: $color-2;
 }
 .type-water {
-	background-color: rgb(87, 179, 202);
+	background: linear-gradient(
+		to bottom,
+		rgb(87, 179, 202) 0%,
+		darken(rgb(87, 179, 202), 10%) 60%
+	);
 	color: $color-2;
 }
 .type-grass {
-	background-color: rgb(19, 134, 48);
+	background: linear-gradient(
+		to bottom,
+		rgb(19, 134, 48) 0%,
+		darken(rgb(19, 134, 48), 10%) 60%
+	);
 	color: $color-3;
 }
 .type-electric {
-	background-color: rgb(251, 255, 4);
+	background: linear-gradient(
+		to bottom,
+		rgb(251, 255, 4) 0%,
+		darken(rgb(251, 255, 4), 10%) 60%
+	);
 	color: $color-2;
 }
 .type-psychic {
-	background-color: rgb(168, 13, 173);
+	background: linear-gradient(
+		to bottom,
+		rgb(168, 13, 173) 0%,
+		darken(rgb(168, 13, 173), 10%) 60%
+	);
 	color: $color-2;
 }
 .type-ice {
-	background-color: rgb(154, 208, 218);
+	background: linear-gradient(
+		to bottom,
+		rgb(154, 208, 218) 0%,
+		darken(rgb(154, 208, 218), 10%) 60%
+	);
 	color: $color-2;
 }
 .type-dragon {
-	background-color: rgb(99, 0, 0);
+	background: linear-gradient(
+		to bottom,
+		rgb(99, 0, 0) 0%,
+		darken(rgb(99, 0, 0), 10%) 60%
+	);
 	color: $color-2;
 }
 .type-dark {
-	background-color: rgb(22, 4, 19);
+	background: linear-gradient(
+		to bottom,
+		rgb(22, 4, 19) 0%,
+		darken(rgb(22, 4, 19), 10%) 60%
+	);
 	color: $color-3;
 }
 .type-fairy {
-	background-color: rgb(211, 111, 236);
+	background: linear-gradient(
+		to bottom,
+		rgb(211, 111, 236) 0%,
+		darken(rgb(211, 111, 236), 10%) 60%
+	);
 	color: $color-3;
 }
 .type-unknown {
-	background-color: rgb(88, 88, 88);
+	background: linear-gradient(
+		to bottom,
+		rgb(88, 88, 88) 0%,
+		darken(rgb(88, 88, 88), 10%) 60%
+	);
 	color: $color-3;
 }
 .type-shadow {
-	background-color: rgb(26, 26, 26);
+	background: linear-gradient(
+		to bottom,
+		rgb(26, 26, 26) 0%,
+		darken(rgb(26, 26, 26), 10%) 60%
+	);
 	color: $color-3;
 }
 

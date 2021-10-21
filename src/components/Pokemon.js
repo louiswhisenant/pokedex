@@ -1,11 +1,15 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { formatNumber } from '../utils/formatNumbers';
 import PokemonToggle from './PokemonToggle';
+import { StoreContext } from '../context/Context';
 
 const Pokemon = ({ pokemon: { name, url } }) => {
 	const [pokemon, setPokemon] = useState(null);
+	const {
+		caught: [caught],
+	} = useContext(StoreContext);
 
 	useEffect(() => {
 		async function fetchData(url) {
@@ -22,37 +26,43 @@ const Pokemon = ({ pokemon: { name, url } }) => {
 			<div className='pokemon' id={`pokemon-${pokemon.order}`}>
 				<PokemonToggle name={name} />
 				<Link to={`/pokemon/${name}`}>
-					{pokemon && (
-						<img src={pokemon.sprites.front_default} alt={name} />
-					)}
+					<div
+						className={`pokemon-upper ${
+							caught.includes(pokemon.name) &&
+							'pokemon-upper-caught'
+						}`}>
+						{pokemon && (
+							<img
+								className='pokemon-image'
+								src={pokemon.sprites.front_default}
+								alt={name}
+							/>
+						)}
 
-					<div className='info'>
-						<h3>{name}</h3>
-						{pokemon && <h4>#{formatNumber(pokemon.order, 3)}</h4>}
+						<div className='pokemon-info'>
+							<h3 className='info-name'>{name}</h3>
+							{pokemon && (
+								<h4 className='info-order'>
+									#{formatNumber(pokemon.id, 3)}
+								</h4>
+							)}
+						</div>
 					</div>
 
-					<div className='types d-none d-md-block'>
-						{pokemon.types.map((t) => (
-							<div
-								className={`type type-${t.type.name}`}
-								key={t.type.name}>
-								{t.type.name}
-							</div>
-						))}
-					</div>
+					<div className='pokemon-lower'>
+						<div className='types'>
+							{pokemon.types.map((t) => (
+								<div
+									className={`type type-${t.type.name}`}
+									key={t.type.name}>
+									{t.type.name}
+								</div>
+							))}
+						</div>
 
-					<div className='abilities d-none d-lg-block'>
-						{pokemon.abilities.map((a) => (
-							<div
-								className={`ability ability-${a.ability.name}`}
-								key={a.ability.name}>
-								{a.ability.name}
-							</div>
-						))}
-					</div>
-
-					<div className='divider'>
-						<div className='divider-center'></div>
+						<div className='divider'>
+							<div className='divider-center'></div>
+						</div>
 					</div>
 				</Link>
 			</div>

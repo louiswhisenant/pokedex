@@ -17,7 +17,7 @@ const PokemonToggle = ({ name }) => {
 	}, [caught]);
 
 	return (
-		<div className='caught-checkbox' onClick={onToggle}>
+		<button className='pokemon-toggle caught-checkbox' onClick={onToggle}>
 			{caught.includes(name) ? (
 				<img
 					src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'
@@ -31,7 +31,7 @@ const PokemonToggle = ({ name }) => {
 					className='pokeball-uncaught'
 				/>
 			)}
-		</div>
+		</button>
 	);
 };
 

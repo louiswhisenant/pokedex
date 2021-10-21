@@ -67,6 +67,19 @@ const Pokedex = () => {
 		// eslint-disable-next-line
 	}, []);
 
+	const noCaughtPokemon = (
+		<div className='no-caught-pokemon'>
+			You have no caught pokemon. Click on the{' '}
+			<img
+				src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'
+				alt='pokeball'
+				className='pokeball-example'
+			/>{' '}
+			found on the Pokemon's pokedex card or its details page to add it to
+			your list of caught pokemon.
+		</div>
+	);
+
 	return (
 		<Fragment>
 			<PokedexNav />
@@ -74,7 +87,10 @@ const Pokedex = () => {
 			{pokemon && (
 				<Container>
 					<div className='pokedex'>
-						{searchTerm.length > 2 && searchResults.length < 1 ? (
+						{filter === 'caught' && caught.length === 0 ? (
+							noCaughtPokemon
+						) : searchTerm.length > 2 &&
+						  searchResults.length === 0 ? (
 							<div className='no-results'>
 								Sorry, no results found for search '
 								<strong>{searchTerm}</strong>
@@ -82,10 +98,15 @@ const Pokedex = () => {
 							</div>
 						) : searchResults.length > 0 ? (
 							mapResults(searchResults, filter, 898)
+						) : filter === 'caught' && caught.length > 0 ? (
+							mapResults(pokemon, filter, 898)
 						) : (
 							mapResults(pokemon, filter, limit)
 						)}
-						{limit < 898 && (
+					</div>
+
+					<div className='load-more-wrapper'>
+						{limit < 898 && filter !== 'caught' && (
 							<Button
 								className='load-more'
 								onClick={() => {

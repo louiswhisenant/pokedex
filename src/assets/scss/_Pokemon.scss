@@ -1,26 +1,14 @@
 .pokemon {
-	display: flex;
 	position: relative;
-	background-color: $color-1;
-	color: $color-3;
-	min-height: 12rem;
-	// padding: 1rem;
-
-	&:nth-child(even) {
-		flex-direction: row-reverse;
-		background-color: $color-3;
-		color: $color-2;
-
-		a {
-			flex-direction: row-reverse;
-		}
-	}
+	height: 20rem;
+	width: 15rem;
+	margin: 1rem;
 
 	.caught-checkbox {
 		position: absolute;
-		bottom: 0rem;
+		top: 50%;
 		left: 50%;
-		transform: translate(-50%, 40%);
+		transform: translate(-50%, -35%);
 		z-index: 6;
 
 		img {
@@ -30,44 +18,82 @@
 
 	a {
 		color: unset;
-		display: unset;
 		text-decoration: unset;
 		display: flex;
+		flex-direction: column;
 		align-items: center;
 		width: 100%;
+		height: 100%;
+		border-radius: 0.3rem;
 
-		img {
-			margin: 1rem;
-		}
-
-		.types,
-		.abilities {
+		.pokemon-upper,
+		.pokemon-lower {
+			width: 100%;
+			height: 50%;
+			padding: 1rem;
 			display: flex;
-			flex-wrap: wrap;
 			flex-direction: column;
-			margin: 0 0.5rem;
+			align-items: center;
+			justify-content: center;
 		}
 
-		.stats {
-			display: flex;
-			flex-wrap: wrap;
-			align-items: center;
-			justify-content: space-evenly;
-			align-self: flex-end;
-			width: 50%;
-			background-color: #424242;
-			height: 75%;
-			padding: 0.25rem 0;
+		.pokemon-upper {
+			background-color: $color-1;
+			color: $color-3;
+			border-radius: 0.3rem 0.3rem 0 0;
 
-			.stat {
+			&.pokemon-upper-caught {
+				background-color: saturate($color-1, 15%);
+			}
+
+			&:not(.pokemon-upper-caught) {
+				background-color: desaturate($color-1, 25%);
+			}
+
+			.pokemon-info {
 				text-align: center;
-				color: $color-3;
-				font-size: 0.7rem;
+				.info-name,
+				.info-order {
+					font-size: 1rem;
 
-				.stat-name {
-					text-transform: uppercase;
-					font-weight: bold;
+					&.info-name {
+						text-transform: capitalize;
+					}
 				}
+			}
+		}
+
+		.pokemon-lower {
+			background-color: $color-3;
+			color: $color-2;
+			border-radius: 0 0 0.3rem 0.3rem;
+
+			.types {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: space-around;
+				width: 100%;
+				margin: 0 0.5rem;
+				font-size: 0.8rem;
+
+				.type {
+					width: 100%;
+					max-width: 50%;
+				}
+			}
+		}
+
+		&:hover {
+			outline: 0.3rem solid rgba($color-2, 0.5);
+			.pokemon-upper {
+				.pokemon-image {
+					animation: bounce 0.3s ease 1;
+				}
+			}
+
+			.pokemon-lower {
+				background-color: darken($color-3, 5%);
 			}
 		}
 
@@ -76,7 +102,7 @@
 			height: 0.5rem;
 			width: 100%;
 			position: absolute;
-			bottom: 0;
+			top: 50%;
 			left: 0;
 
 			.divider-center {
