@@ -253,6 +253,9 @@
   color: #ececec;
   padding: 1rem;
 }
+.pokemon-details .pokemon-details-header .header-title {
+  text-transform: capitalize;
+}
 .pokemon-details .pokemon-details-title {
   text-transform: uppercase;
   font-weight: bolder;

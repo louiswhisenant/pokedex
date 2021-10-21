@@ -29,7 +29,7 @@ const PokemonDetails = ({ match }) => {
 		return <div>Loading...</div>;
 	}
 
-	const { sprites, name, order, types, stats, abilities, height, weight } =
+	const { sprites, name, id, types, stats, abilities, height, weight } =
 		details;
 
 	const avatar =
@@ -56,8 +56,8 @@ const PokemonDetails = ({ match }) => {
 			<PokemonToggle name={name} />
 
 			<div className='pokemon-details-header'>
-				<h1 className='title'>{name}</h1>
-				<h1>#{formatNumber(order, 3)}</h1>
+				<h1 className='header-title'>{name}</h1>
+				<h1>#{formatNumber(id, 3)}</h1>
 			</div>
 			<Container>
 				<div className='pokemon-details-body'>

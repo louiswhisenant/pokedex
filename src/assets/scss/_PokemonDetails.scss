@@ -19,6 +19,10 @@
 		background-color: $color-1;
 		color: $color-3;
 		padding: 1rem;
+
+		.header-title {
+			text-transform: capitalize;
+		}
 	}
 
 	.pokemon-details-title {
