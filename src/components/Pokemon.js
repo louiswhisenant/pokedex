@@ -21,28 +21,40 @@ const Pokemon = ({ pokemon: { name, url } }) => {
 		pokemon && (
 			<div className='pokemon' id={`pokemon-${pokemon.order}`}>
 				<PokemonToggle name={name} />
-				{pokemon && (
-					<Link to={`/pokemon/${name}`}>
+				<Link to={`/pokemon/${name}`}>
+					{pokemon && (
 						<img src={pokemon.sprites.front_default} alt={name} />
-					</Link>
-				)}
-				<div className='info'>
-					<h3>{name}</h3>
-					{pokemon && <h4>#{formatNumber(pokemon.order, 3)}</h4>}
-				</div>
-				<div className='types d-none d-md-block'>
-					{pokemon.types.map((t) => (
-						<div
-							className={`type type-${t.type.name}`}
-							key={t.type.name}>
-							{t.type.name}
-						</div>
-					))}
-				</div>
-				<div></div>
-				<div className='divider'>
-					<div className='divider-center'></div>
-				</div>
+					)}
+
+					<div className='info'>
+						<h3>{name}</h3>
+						{pokemon && <h4>#{formatNumber(pokemon.order, 3)}</h4>}
+					</div>
+
+					<div className='types d-none d-md-block'>
+						{pokemon.types.map((t) => (
+							<div
+								className={`type type-${t.type.name}`}
+								key={t.type.name}>
+								{t.type.name}
+							</div>
+						))}
+					</div>
+
+					<div className='abilities d-none d-lg-block'>
+						{pokemon.abilities.map((a) => (
+							<div
+								className={`ability ability-${a.ability.name}`}
+								key={a.ability.name}>
+								{a.ability.name}
+							</div>
+						))}
+					</div>
+
+					<div className='divider'>
+						<div className='divider-center'></div>
+					</div>
+				</Link>
 			</div>
 		)
 	);

@@ -42,7 +42,9 @@
     ]
   },
   "devDependencies": {
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.3",
     "browser-sync": "^2.27.5",
+    "enzyme": "^3.11.0",
     "gulp": "^4.0.2",
     "gulp-sass": "^5.0.0"
   }

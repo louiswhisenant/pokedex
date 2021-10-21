@@ -22,12 +22,13 @@ const PokemonToggle = ({ name }) => {
 				<img
 					src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'
 					alt='pokeball'
+					className='pokeball-caught'
 				/>
 			) : (
 				<img
 					src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'
 					alt='pokeball uncaught'
-					className='uncaught'
+					className='pokeball-uncaught'
 				/>
 			)}
 		</div>

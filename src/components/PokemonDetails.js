@@ -9,10 +9,10 @@ import {
 } from '../utils/formatNumbers';
 import { Spinner, Button } from 'reactstrap';
 
-const PokemonDetails = ({ match, url }) => {
+const PokemonDetails = ({ match }) => {
 	const [details, setDetails] = useState(null);
 
-	const getDetails = async (url) => {
+	const getDetails = async () => {
 		const res = await axios.get(
 			`https://pokeapi.co/api/v2/pokemon/${match.params.id}`
 		);
@@ -21,15 +21,16 @@ const PokemonDetails = ({ match, url }) => {
 	};
 
 	useEffect(() => {
-		getDetails(url);
+		getDetails();
 		// eslint-disable-next-line
-	}, [url]);
+	}, []);
 
 	if (!details) {
 		return <div>Loading...</div>;
 	}
 
-	const { sprites, name, order, types, height, weight } = details;
+	const { sprites, name, order, types, stats, abilities, height, weight } =
+		details;
 
 	const avatar =
 		sprites.other['official-artwork'].front_default ??
@@ -67,6 +68,30 @@ const PokemonDetails = ({ match, url }) => {
 							</p>
 						))}
 					</div>
+
+					<div className='abilities d-none d-lg-block'>
+						{abilities.map((a) => (
+							<div
+								className={`ability ability-${a.ability.name}`}
+								key={a.ability.name}>
+								{a.ability.name}
+							</div>
+						))}
+					</div>
+
+					<div className='stats d-none d-xl-flex'>
+						{stats.map((s) => (
+							<div
+								className={`stat stat-${s.stat.name}`}
+								key={s.stat.name}>
+								<div className='stat-name'>{s.stat.name}</div>
+								<span className='stat-value'>
+									{s.base_stat}
+								</span>
+							</div>
+						))}
+					</div>
+
 					<div className='biometrics'>
 						<h3>
 							<i className='fas fa-weight-hanging'></i>{' '}
