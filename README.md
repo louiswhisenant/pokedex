@@ -17,7 +17,7 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.\
-The application should automatically run on [http://localhost:3000](http://localhost:3000) onyour default browser.
+The application should automatically run on [http://localhost:3000](http://localhost:3000) on your default browser.
 
 The page will reload if you save edits.\
 You will also see any lint errors in the console.

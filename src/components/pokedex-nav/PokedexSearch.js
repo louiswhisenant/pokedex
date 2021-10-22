@@ -30,6 +30,10 @@ const PokedexSearch = () => {
 		keys: ['name'],
 	};
 
+	const onSubmit = (e) => {
+		e.preventDefault();
+	};
+
 	useEffect(() => {
 		if (pokemon) {
 			const fuse = new Fuse(pokemon, options);
@@ -44,7 +48,7 @@ const PokedexSearch = () => {
 
 	return (
 		<NavItem id='pokedex-search'>
-			<Form>
+			<Form onSubmit={(e) => onSubmit(e)}>
 				<Input
 					value={query}
 					onChange={(e) => {

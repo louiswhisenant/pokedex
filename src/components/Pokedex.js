@@ -8,7 +8,7 @@ import PokedexNav from './pokedex-nav/PokedexNav';
 import Pokemon from './Pokemon';
 
 const Pokedex = () => {
-	const [limit, setLimit] = useState(20);
+	const [limit, setLimit] = useState(19);
 	const {
 		// eslint-disable-next-line no-unused-vars
 		caught: [caught, setCaught],
